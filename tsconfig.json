@@ -6,6 +6,9 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": ["reflect-metadata"], // required for Inversify
+    "experimentalDecorators": true, // must be set to true for Inversify
+    "emitDecoratorMetadata": true, // must be set to true for Inversify
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

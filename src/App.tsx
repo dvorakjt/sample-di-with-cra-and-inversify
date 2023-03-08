@@ -1,25 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { serviceContainer } from './services/service-container';
+import { ServicesContextProvider } from './contexts/ServicesContext';
+import { UserContextProvider } from './contexts/UserContext';
+import {FauxRouter} from './components/FauxRouter';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ServicesContextProvider container={serviceContainer}>
+      <UserContextProvider>
+        <FauxRouter></FauxRouter>
+      </UserContextProvider>
+    </ServicesContextProvider>
   );
 }
 

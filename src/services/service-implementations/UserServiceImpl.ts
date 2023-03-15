@@ -42,10 +42,6 @@ export class UserServiceImpl implements UserService {
     this.error.next("");
     this.isLoading.next(true);
 
-    console.log("IN user service");
-    console.log(userDetails);
-    console.log(credentials);
-
     this.authService.register(credentials)
       .then((authDetails:AuthDetails) => {
         this.userRepo.create(authDetails.id, userDetails)

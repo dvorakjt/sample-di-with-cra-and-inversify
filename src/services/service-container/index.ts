@@ -6,7 +6,7 @@ import { AuthServiceEmailAndPassword, AuthServiceEmailOnly, AuthServiceGoogle, U
 
 const serviceContainer = new Container();
 
-serviceContainer.bind<AuthService>(TYPES.AuthService).to(AuthServiceEmailAndPassword)
+serviceContainer.bind<AuthService>(TYPES.AuthService).to(AuthServiceGoogle)
 serviceContainer.bind<UserRepositoryService>(TYPES.UserRepositoryService).to(UserRepoServiceImpl);
 serviceContainer.bind<UserService>(TYPES.UserService).to(UserServiceImpl).inSingletonScope();
 

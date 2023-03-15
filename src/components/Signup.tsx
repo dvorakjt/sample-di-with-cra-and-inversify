@@ -19,8 +19,8 @@ export function Signup() {
   const [favoriteColor, setFavoriteColor] = useState("");
 
   return (
-  <div style={{width: "fit-content", height: "fit-content", padding: "20px", boxShadow: "4px 4px 4px lightgray", borderRadius: "4px", border: "1px solid lightgray"}}>
-    <h1 style={{fontSize: "18px", textAlign: "center"}}>Register With {authServiceType}</h1>
+  <div className="card">
+    <h1 className="header">Register With {authServiceType}</h1>
     {authServiceType !== "Google" && 
       <>
         <label>Email</label>
@@ -49,8 +49,8 @@ export function Signup() {
     <input type="text" value={favoriteFood} onChange={(e) => setFavoriteFood(e.target.value)} />
     <br />
     <br />
-    <p>{userContext.error}</p>
-    <button disabled={userContext.isLoading} onClick={() => {
+    <p className="error">{userContext.error}</p>
+    <button className="btn" disabled={userContext.isLoading} onClick={() => {
       userContext.signup({favoriteColor, favoriteFood}, {username: email, password})
     }}>Register</button>
   </div>);

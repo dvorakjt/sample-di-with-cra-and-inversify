@@ -3,7 +3,6 @@ import { ServicesContext } from "../contexts/ServicesContext";
 import { UserContext } from "../contexts/UserContext";
 import { AuthService } from "../services/service-interfaces";
 import { TYPES } from "../services/types/types";
-import { Card } from "react-bootstrap";
 
 export function Login() {
   const servicesContext = useContext(ServicesContext);
@@ -18,8 +17,8 @@ export function Login() {
   const [password, setPassword] = useState("");
 
   return (
-  <div style={{width: "fit-content", height: "fit-content", padding: "20px", boxShadow: "4px 4px 4px lightgray", borderRadius: "4px", border: "1px solid lightgray"}}>
-    <h1 style={{fontSize: "18px", textAlign: "center"}}>Login With {authServiceType}</h1>
+  <div className="card">
+    <h1 className="header">Login With {authServiceType}</h1>
     {authServiceType !== "Google" && 
       <>
         <label>Email</label>
@@ -38,9 +37,11 @@ export function Login() {
         <br />
       </>
     }
-    <p>{userContext.error}</p>
-    <button disabled={userContext.isLoading} onClick={() => {
-      userContext.login({username: email, password})
-    }}>Login</button>
+    <p className="error">{userContext.error}</p>
+    <div className="btn-container">
+      <button disabled={userContext.isLoading} className="btn" onClick={() => {
+        userContext.login({username: email, password})
+      }}>Login</button>
+    </div>
   </div>);
 }

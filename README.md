@@ -1,46 +1,27 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dependency Injection with InversifyJS and Create React APP
 
-## Available Scripts
+## Inversion of Control and Dependency Injection
+Inversion of Control and Depenency injection are powerful tools in a developers arsenal. These design patterns enable us to make our code more loosely coupled, more extensible and flexible, and more testable.
 
-In the project directory, you can run:
+Frameworks like Angular are heavily reliant on Inversion of Control (IoC) and Dependency Injection (DI), and though these patterns are present in React in the form of Contexts and Props, I found myself wanting to be able to create service classes which could be autowired with each other, as well as passed into components via Context.
 
-### `npm start`
+This project serves as a proof of concept for how these powerful patterns can be incorporated into a React app bootstrapped with Create React App.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setup
+An IoC container is provided by InversifyJS, a popular IoC/DI library for JavaScript. This library allows you to designated classes as injectable, meaning that the container can recognize them and autowire them together with the classes upon with they depend, by marking them with the @injectable annotation. These dependences are marked with the @inject annotation.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Because CRA does not natively provide support for annotations, CRACO was used to override these settings, while avoiding ejecting CRA.
 
-### `npm test`
+## Services
+Interfaces are defined for each type of service that the application will use, defining the methods that each service is expected to have. The three service interfaces I've created are an auth service, a user repository service, and a user service.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The auth service provides methods for authenticating, registering, and deauthenticating. The user repository service provides methods for finding, creating and updating user records. Finally, the user service provides methods for logging in, signing up and logging out.
 
-### `npm run build`
+These services are implemented by concrete classes, and the implementation details of these can vary as long as the method signatures and return types match.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The services container defines which concrete service classes should be provided for which interface, and then these services are autowired with each other by the container.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The autowired services are provided to components within the React app via context.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This makes it really easy to swap service classes out for other classes implementing the same interfaces, thus bringing all the benefits of IoC and DI into React.

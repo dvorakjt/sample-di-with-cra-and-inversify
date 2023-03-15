@@ -10,12 +10,12 @@ export function FauxRouter() {
   
   return activeUser ? <Dashboard></Dashboard> : 
     pageToShow === 'login' ? 
-      <div style={{width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
+      <div className="container">
         <Login></Login>
-        <p>New User? <button onClick={() => setPageToShow("register")}>Register</button></p>
+        <p>New User? <button className="btn" onClick={() => setPageToShow("register")}>Register</button></p>
       </div> :
-      <div style={{width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
+      <div className="container">
         <Signup></Signup>
-        <p>Already signed up? <button onClick={() => setPageToShow("login")}>Login</button></p>
+        <p>Already signed up? <button className="btn" onClick={() => setPageToShow("login")}>Login</button></p>
       </div>
 }

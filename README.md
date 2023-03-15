@@ -2,7 +2,7 @@
 # Dependency Injection with InversifyJS and Create React APP
 
 ## Inversion of Control and Dependency Injection
-Inversion of Control and Depenency injection are powerful tools in a developers arsenal. These design patterns enable us to make our code more loosely coupled, more extensible and flexible, and more testable.
+Inversion of Control and Depenency injection are powerful tools in a developer's arsenal. These design patterns enable us to make our code more loosely coupled, more extensible and flexible, and more testable.
 
 Frameworks like Angular are heavily reliant on Inversion of Control (IoC) and Dependency Injection (DI), and though these patterns are present in React in the form of Contexts and Props, I found myself wanting to be able to create service classes which could be autowired with each other, as well as passed into components via Context.
 
